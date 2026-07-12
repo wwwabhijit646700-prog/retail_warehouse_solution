@@ -17,7 +17,7 @@ def calendar_master_gold():
         c.month,
         c.day,
         c.weekday,
-        lag(c.ty_date,7,'1900-01-01') over(partition by c.year order by c.ty_date) lw_date,
+        lag(c.ty_date,7,'1900-01-01') over(order by c.ty_date) lw_date,
         min(c.ty_date) over(partition by c.year) year_start_date,
         max(c.ty_date) over(partition by c.year) year_end_date
         from dwh_retail.silver.calendar_silver c
