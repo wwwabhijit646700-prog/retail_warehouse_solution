@@ -9,7 +9,7 @@ from pyspark.sql.functions import *
 def sales_bronze():
     sales_bronze=spark.readStream.format("cloudFiles")\
         .option("cloudFiles.format","csv")\
-        .option("cloufFiles.schemaEvolutionMode","addNewColumns")\
+        .option("cloudFiles.schemaEvolutionMode","addNewColumns")\
         .option("cloudFiles.inferColumnTypes","True")\
         .load("/Volumes/dwh_retail/bronze/source_files/FACT_DATA/Sales_fact/")
     sales_bronze=sales_bronze.withColumn("updated_at",lit(current_timestamp()))
